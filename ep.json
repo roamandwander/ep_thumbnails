@@ -1,0 +1,11 @@
+{
+  "parts": [
+    {
+      "name": "main",
+      "hooks": {
+        "padUpdate": "ep_thumbnails/index:queueThumbnail",
+        "padCreate": "ep_thumbnails/index:instantThumbnail"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+	"name": "ep_thumbnails",
+	"version": "0.0.1",
+	"description": "An Etherpad Lite plugin that generates thumbnail previews of pads on creatiion and update.",
+	"author": "jeremyplease (Jeremy Pease) <npm@jeremypease.com>",
+	"contributors": [],
+	"dependencies": {
+		"webshot": "^0.17.0"
+	},
+	"peerDependencies": {
+		"ep_etherpad_lite":">=1.5.1"
+	},
+	"engines": {
+		"node": ">= 0.6.0"
+	}
+}
