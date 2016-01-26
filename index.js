@@ -3,17 +3,21 @@ var settings = require('ep_etherpad-lite/node/utils/Settings').ep_thumbnails || 
 var fs = require('fs');
 var webshot = require('webshot');
 
-var css = fs.readFileSync('src/static/css/pad.css').toString();
-css += fs.readFileSync('src/static/custom/pad.css').toString();
-css += fs.readFileSync('node_modules/ep_font_size/static/css/iframe.css').toString();
-
 var options = {
-	customCSS: (css + (settings.css || '')),
+	customCSSFiles: settings.cssFiles || [],
+	customCSS: settings.css || '',
 	interval: settings.interval || 30000,
 	savePath: settings.savePath || './src/static/images/thumbnails/',
 	windowSize: settings.windowSize || { width: 800, height: 800 },
 	shotSize: settings.shotSize || { width: 800, height: 800 },
 };
+
+var css = '';
+options.customCSSFiles.forEach(function(path) {
+	css += fs.readFileSync(path).toString();
+});
+css += options.customCSS;
+
 var padIdsToProcess = [];
 
 exports.queueThumbnail = function (hookName, data, callback) {
